@@ -12,8 +12,9 @@ module.exports = class Rename {
       );
 
       originFiles.forEach(fileName => {
-        assets[fileName.replace(originNameReg, targetName)] = assets[fileName];
-        delete assets[fileName];
+        let assetsCopy = Object.assign([], assets);
+        assetsCopy[fileName.replace(originNameReg, targetName)] = assetsCopy[fileName];
+        delete assetsCopy[fileName];
       });
     });
   }
